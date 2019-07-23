@@ -37,6 +37,7 @@ public class MyViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         position = position % mTvLists.size();
         TextView mTvTextView = mTvLists.get(position);
+        //将获取到控件 添加在布局中，不添加不显示呀！！！！！！
         container.addView(mTvTextView);
         return mTvTextView;
     }
