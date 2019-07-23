@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".MainActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/colorAccent"
+
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:padding="10dp"
+        android:layout_alignBottom="@id/mViewPager"
+        android:background="#33ffffff">
+
+        <TextView
+            android:id="@+id/mTvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:textSize="12sp"
+            android:textColor="#ffffff"
+            android:text="标题标题标题" />
+
+        <LinearLayout
+            android:id="@+id/mLinearIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

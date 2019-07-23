@@ -1,1 +1,1 @@
-include ':app', ':01_ykcd'
+include ':app', ':01_ykcd', ':02_viewpager'
