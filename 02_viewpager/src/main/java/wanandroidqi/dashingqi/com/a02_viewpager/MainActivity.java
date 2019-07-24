@@ -1,14 +1,17 @@
 package wanandroidqi.dashingqi.com.a02_viewpager;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -125,4 +128,68 @@ public class MainActivity extends AppCompatActivity {
         mTvTitle = findViewById(R.id.mTvTitle);
 
     }
+
+
+    class MyViewPagerAdapter extends PagerAdapter {
+
+        private List<TextView> mTvLists;
+
+        private Context mContext;
+
+        public MyViewPagerAdapter(Context context, List<TextView> tvLists) {
+            mContext = context;
+            mTvLists = tvLists;
+
+        }
+
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
+            position = position % mTvLists.size();
+            TextView mTvTextView = mTvLists.get(position);
+            //将获取到控件 添加在布局中，不添加不显示呀！！！！！！
+            container.addView(mTvTextView);
+            mTvTextView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            Log.d(TAG, "onTouch: Down");
+                            //当手机按下的时候，就将消息队列清空,这样手指滑动停留在两个页面中间，就不会自动滑动了。
+                            mHandler.removeCallbacksAndMessages(null);
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            Log.d(TAG, "onTouch: Move");
+                            mHandler.removeCallbacksAndMessages(null);
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            Log.d(TAG, "onTouch: Up");
+                            break;
+                        case MotionEvent.ACTION_CANCEL:
+                            mHandler.sendEmptyMessageDelayed(0, 4000);
+                            break;
+                    }
+                    //不返回true 是为点击事件做准备的。返回true就因为这拦截消费这个点击事件了，就调用不到onClickListener事件了。
+                    return true;
+                }
+            });
+            return mTvTextView;
+        }
+
+        @Override
+        public int getCount() {
+            return Integer.MAX_VALUE;
+        }
+
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+            return view == o;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            container.removeView((View) object);
+        }
+    }
+
 }
