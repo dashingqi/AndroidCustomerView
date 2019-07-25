@@ -2,44 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
-
-    <RelativeLayout
-        android:id="@+id/relativeLevel1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/level1">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/icon_home"
-
-            />
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/relativeLevel1"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/level1">
-
-        <ImageView
-            android:id="@+id/ivHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="@drawable/icon_home"
-
-            />
-    </RelativeLayout>
-
+    <wanandroidqi.dashingqi.com.androidcustomerview.CircleView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:background="@color/colorPrimary"
+        android:padding="10dp"
+        app:circle_color="@color/colorAccent"
+        app:circle_default_bg="@drawable/boy"
+        app:circle_default_size="100dp" />
 
 </RelativeLayout>
