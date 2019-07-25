@@ -25,6 +25,9 @@ public class MyToggleButton extends View implements View.OnClickListener {
      */
     private int maxDist;
 
+    /**
+     * 顶部控件距离左边的距离
+     */
     private int offsetX;
 
     /**
@@ -32,6 +35,9 @@ public class MyToggleButton extends View implements View.OnClickListener {
      */
     private boolean isOpen = false;
 
+    /**
+     * 点击事件是否屏蔽
+     */
     private boolean isClickEnable = true;
 
     private int firstX;
@@ -98,19 +104,22 @@ public class MyToggleButton extends View implements View.OnClickListener {
         } else {
             offsetX = 0;
         }
+        //刷新布局 自动调用onDraw()方法
+        invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(TAG, "onTouchEvent: ");
         super.onTouchEvent(event);
         int startX = 0;
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                Log.d(TAG, "onTouchEvent: ==== Down");
                 firstX = startX = (int) event.getX();
                 isClickEnable = true;
                 break;
             case MotionEvent.ACTION_MOVE:
+                Log.d(TAG, "onTouchEvent: ==== Move");
                 int endX = (int) event.getX();
                 int offsetDist = endX - startX;
                 offsetX += offsetDist;
@@ -127,6 +136,7 @@ public class MyToggleButton extends View implements View.OnClickListener {
 
                 break;
             case MotionEvent.ACTION_UP:
+                Log.d(TAG, "onTouchEvent: ==== Up");
                 if (!isClickEnable) {
                     if (offsetX > maxDist / 2) {
                         isOpen = true;
