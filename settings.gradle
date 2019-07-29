@@ -1,1 +1,1 @@
-include ':app', ':01_ykcd', ':02_viewpager', ':03_togglebutton', ':scrolltoandscrollbytest', ':04_customer_viewpager'
+include ':app', ':01_ykcd', ':02_viewpager', ':03_togglebutton', ':scrolltoandscrollbytest', ':04_customer_viewpager', ':05_indexwordproject'
