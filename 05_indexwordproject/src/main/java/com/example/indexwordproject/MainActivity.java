@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         mIndexWordsView.setIndexWords(new IIndexWordsListener() {
             @Override
             public void indexWords(String word) {
+
+
                 mRelativeTvWord.setVisibility(View.VISIBLE);
                 mTvWord.setText(word);
                 mHandler.removeCallbacksAndMessages(null);
@@ -93,6 +95,14 @@ public class MainActivity extends AppCompatActivity {
                         mRelativeTvWord.setVisibility(View.GONE);
                     }
                 }, 3000);
+
+                for (int i = 0; i < personData.size(); i++) {
+                    String pinyin = personData.get(i).getPinyin().substring(0, 1);
+                    if (pinyin.equals(word)) {
+                        mListView.setSelection(i);
+                        return;
+                    }
+                }
             }
         });
     }

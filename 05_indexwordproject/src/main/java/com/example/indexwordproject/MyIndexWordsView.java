@@ -76,6 +76,7 @@ public class MyIndexWordsView extends View {
             //获取到字母
             String word = words[i];
             Rect wordRect = new Rect();
+            //用矩形将字符串框起来，这样可以通过rect获取到字符串的信息。
             mPaint.getTextBounds(word, 0, 1, wordRect);
             int wordHeight = wordRect.height();
             int wordWidth = wordRect.width();
